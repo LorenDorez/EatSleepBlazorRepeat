@@ -1,0 +1,165 @@
+﻿@page "/autocomplete-kendo"
+
+
+<h1>AutoComplete</h1>
+
+<span class="k-widget k-autocomplete k-autocomplete-clearable k-state-default" style="width: 100%;">
+    <input type="text" class="k-input" placeholder=@Placeholder autocomplete="off" bind=@Value oninput=@OnInput />
+    @*<span unselectable="on" class="k-icon k-clear-value k-i-close k-hidden" title="clear" role="button" tabindex="-1">::before(when hovered for X</span>
+    <span class="k-icon k-i-loading" style="display:none"></span>*@
+</span>
+
+<div class="k-animation-container" style="display:none;">
+    <div class="k-list-container k-popup k-group k-reset">
+        <div class="k-group-header"></div>
+        <div class="k-list-scroller" unselectable="on" style="height: auto;">
+            <ul class="k-list k-reset">
+                <li class="k-item">Ukraine</li>
+                <li class="k-item">United Kingdom</li>
+            </ul>
+        </div>
+        <div class="k-nodata" style="display:none">
+            <div>No data found.</div>
+        </div>
+        </div>
+</div>
+
+
+@*<div class="k-animation-container" style="width: 462px; height: auto; overflow: hidden; top: 87.2188px;
+z-index: 10002; left: 8px; box-sizing: content-box; display: none; position: absolute;" aria-hidden="true">
+    <div class="k-list-container k-popup k-group k-reset" id="countries-list" data-role="popup" aria-hidden="true" style="position: absolute; font-size: 14px;
+font-family: Arial, Helvetica, sans-serif; font-stretch: 100%; font-style: normal; font-weight: 400; line-height: 21px; width: 460px; min-width: 460px; white-space: normal;
+height: auto; display: none; transform: translateY(-70px);">
+        <div class="k-group-header" style="display:none"></div>
+        <div class="k-list-scroller" unselectable="on" style="height: auto;">
+            <ul unselectable="on" class="k-list k-reset" tabindex="-1" aria-hidden="true" id="countries_listbox" aria-live="polite" data-role="staticlist" role="listbox">
+                <li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="0">Ukraine</li>
+                <li tabindex="-1" role="option" unselectable="on" class="k-item" aria-selected="false" data-offset-index="1">United Kingdom</li>
+            </ul>
+        </div>
+        <div class="k-nodata" style="display:none">
+            <div>No data found.</div>
+        </div>
+    </div>
+</div>*@
+
+@*
+    k-state-hover
+    k-state-focused
+    k-state-border-down
+*@
+
+
+@*<div class="acWrapper-List" style="@(IsSuggestionsVisible ? "" : "display: none") ">
+    <ul>
+        @foreach (var item in SuggestionListData)
+        {
+            <li onclick=@(() => OnSuggestionSelect(@item))>@item</li>
+        }
+    </ul>
+</div>*@
+
+
+
+@*<button class="btn btn-primary">Click me</button>*@
+
+@functions {
+    // TO DO
+    /*
+        DataSource IEnumerable
+        OnTextChanged Action
+        ThrottleLimit int
+        MinLength int
+        FilterType (Contains|StartwsWidth)
+        DataFiledText
+        Templates (Header, Footer, Item)
+        MaxHeight
+
+        Events (Select, Open, Close, DataBound, Filtering)
+
+        ADVANCED AREAS
+        Seperator
+        Virtualization
+        Grouping
+    */
+
+
+    string Placeholder = "Select a country...";
+    string[] SuggestionListData;
+
+    string[] TestData;
+
+    string Value = "";
+    bool IsSuggestionsVisible = false;
+
+    protected override async Task OnInitAsync()
+    {
+        TestData = new string[] {
+        "Albania",
+        "Andorra",
+        "Armenia",
+        "Austria",
+        "Azerbaijan",
+        "Belarus",
+        "Belgium",
+        "Bosnia & Herzegovina",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Georgia",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Iceland",
+        "Ireland",
+        "Italy",
+        "Kosovo",
+        "Latvia",
+        "Liechtenstein",
+        "Lithuania",
+        "Luxembourg",
+        "Macedonia",
+        "Malta",
+        "Moldova",
+        "Monaco",
+        "Montenegro",
+        "Netherlands",
+        "Norway",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Russia",
+        "San Marino",
+        "Serbia",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "Turkey",
+        "Ukraine",
+        "United Kingdom",
+        "Vatican City"
+  };
+
+        SuggestionListData = TestData;
+    }
+
+    void OnInput(UIChangeEventArgs e)
+    {
+        string filterValue = e.Value.ToString().ToLower();
+        IsSuggestionsVisible = filterValue != "";
+        SuggestionListData = TestData.Where(x => x.ToLower().StartsWith(filterValue)).ToArray();
+    }
+
+    void OnSuggestionSelect(string item)
+    {
+        Value = item;
+        IsSuggestionsVisible = false;
+    }
+}
