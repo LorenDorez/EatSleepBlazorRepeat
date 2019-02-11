@@ -44,15 +44,20 @@
     <input type="text" placeholder=@Placeholder autocomplete="off" bind=@Value oninput=@OnInput />
     <div class="acWrapper-List" style="@(IsSuggestionsVisible ? "" : "display: none") ">
         <ul>
-            @foreach (var item in SuggestionListData)
+            @if (SuggestionListData.Length == 0)
             {
-                <li onclick=@(() => OnSuggestionSelect(@item))>@item</li>
+                <li>No Data Found!</li>
+            }
+            else
+            {
+                @foreach (var item in SuggestionListData)
+                {
+                    <li onclick=@(() => OnSuggestionSelect(@item))>@item</li>
+                }
             }
         </ul>
     </div>
 </div>
-
-<button class="btn btn-primary">Click me</button>
 
 @functions {
     // TO DO
