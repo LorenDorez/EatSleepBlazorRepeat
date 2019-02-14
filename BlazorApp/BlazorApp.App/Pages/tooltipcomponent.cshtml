@@ -1,0 +1,50 @@
+﻿<style>
+    .bstooltip-fix-topbottom .arrow {
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+</style>
+
+<div class="tooltip fade 
+     @(_IsVisible ? "show" : "") 
+     @(Placement == "Bottom" ? "bs-tooltip-bottom bstooltip-fix-topbottom" : "")
+     @(Placement == "Top"  ? "bs-tooltip-top bstooltip-fix-topbottom" : "")
+     "
+     
+     style="position: absolute; top: 0; left: 0;
+    @(ClientX > 0 ? "transform: translate3d(" + (ClientX/1.5) + "px, " + (ClientY/1.5) + "px, 0px);" : "")
+     ">
+    <div class="arrow"></div>
+    <div class="tooltip-inner">
+        @ChildContent
+    </div>
+</div>
+
+@functions {
+    [Parameter] private RenderFragment ChildContent { get; set; }
+
+    bool _IsVisible { get; set; } = false;
+    [Parameter]
+    public bool IsVisible
+    {
+        get {
+            return _IsVisible;
+        }
+        set
+        {
+            _IsVisible = value;
+            StateHasChanged();
+        }
+    }
+
+    [Parameter] string Placement { get; set; } = "Bottom";
+
+    [Parameter] public long ScreenX { get; set; } = 0;
+    [Parameter] public long ScreenY { get; set; } = 0;
+    [Parameter] public long ClientX { get; set; } = 0;
+    [Parameter] public long ClientY { get; set; } = 0;
+
+
+
+}

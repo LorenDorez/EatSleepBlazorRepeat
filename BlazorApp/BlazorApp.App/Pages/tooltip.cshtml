@@ -1,0 +1,51 @@
+﻿
+@page "/tooltip"
+
+
+<h1>Tooltip</h1>
+
+
+<button class="btn btn-primary" onmouseenter="@OnMouseEnterBottom" onmouseover="@OnMouseOverBottom" onmouseout="@OnMouseOutBottom">Hover me (bottom)</button>
+<tooltipcomponent ref="tooltipBottom" Placement="Bottom">
+    This is a Simple Tooltip message placed on the bottom!!!
+</tooltipcomponent>
+
+<hr />
+
+<button class="btn btn-primary" onmouseover="@OnMouseOverTop" onmouseout="@OnMouseOutTop">Hover me (top)</button>
+<tooltipcomponent ref="tooltipTop" Placement="Top">
+    This is a Simple Tooltip message placed on the top!!!
+</tooltipcomponent>
+
+
+@functions {
+    tooltipcomponent tooltipBottom;
+    tooltipcomponent tooltipTop;
+
+    void OnMouseEnterBottom()
+    {
+        tooltipBottom.IsVisible = true;
+    }
+    void OnMouseOverBottom(UIMouseEventArgs e)
+    {
+        tooltipBottom.IsVisible = true;
+    }
+    void OnMouseOutBottom()
+    {
+        tooltipBottom.IsVisible = false;
+    }
+
+    void OnMouseOverTop(UIMouseEventArgs e)
+    {
+        tooltipTop.ScreenX = e.ScreenX;
+        tooltipTop.ScreenY = e.ScreenY;
+        tooltipTop.ClientX = e.ClientX;
+        tooltipTop.ClientY = e.ClientY;
+
+        tooltipTop.IsVisible = true;
+    }
+    void OnMouseOutTop()
+    {
+        tooltipTop.IsVisible = false;
+    }
+}

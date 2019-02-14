@@ -6,11 +6,19 @@
 
 <button class="btn btn-primary" onclick="@IncrementCount">Click me</button>
 
+<KendoButton OnButtonClick="@IncrementCountKendo">Click me (kendo button)</KendoButton>
+
 @functions {
     int currentCount = 0;
 
     void IncrementCount()
     {
         currentCount++;
+    }
+
+    void IncrementCountKendo()
+    {
+        currentCount++;
+        StateHasChanged();
     }
 }
