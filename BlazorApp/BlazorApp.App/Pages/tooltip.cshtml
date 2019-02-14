@@ -1,16 +1,18 @@
 ﻿
 @page "/tooltip"
-
-
+@*  *@
 <h1>Tooltip</h1>
 
 
-<button class="btn btn-primary" onmouseenter="@OnMouseEnterBottom" onmouseover="@OnMouseOverBottom" onmouseout="@OnMouseOutBottom">Hover me (bottom)</button>
+@*<button class="btn btn-primary" onmouseover="@OnMouseOverTop" onmouseout="@OnMouseOutTop">Hover me (top)</button>
+    <tooltipcomponent ref="tooltipTop" Placement="Top">
+        This is a Simple Tooltip message placed on the top!!!
+    </tooltipcomponent>*@
+
+<button class="btn btn-primary" onmouseover="@OnMouseOverBottom" onmouseout="@OnMouseOutBottom">Hover me (bottom)</button>
 <tooltipcomponent ref="tooltipBottom" Placement="Bottom">
     This is a Simple Tooltip message placed on the bottom!!!
 </tooltipcomponent>
-
-<hr />
 
 <button class="btn btn-primary" onmouseover="@OnMouseOverTop" onmouseout="@OnMouseOutTop">Hover me (top)</button>
 <tooltipcomponent ref="tooltipTop" Placement="Top">
@@ -22,12 +24,13 @@
     tooltipcomponent tooltipBottom;
     tooltipcomponent tooltipTop;
 
-    void OnMouseEnterBottom()
-    {
-        tooltipBottom.IsVisible = true;
-    }
+
     void OnMouseOverBottom(UIMouseEventArgs e)
     {
+        tooltipBottom.ScreenX = e.ScreenX;
+        tooltipBottom.ScreenY = e.ScreenY;
+        tooltipBottom.ClientX = e.ClientX;
+        tooltipBottom.ClientY = e.ClientY;
         tooltipBottom.IsVisible = true;
     }
     void OnMouseOutBottom()
@@ -46,11 +49,6 @@
     }
     void OnMouseOutTop()
     {
-         tooltipTop.ScreenX = 0;
-        tooltipTop.ScreenY = 0;
-        tooltipTop.ClientX = 0;
-        tooltipTop.ClientY = 0;
-
         tooltipTop.IsVisible = false;
     }
 }

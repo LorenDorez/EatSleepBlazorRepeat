@@ -12,8 +12,9 @@
      @(Placement == "Top"  ? "bs-tooltip-top bstooltip-fix-topbottom" : "")
      "
      
-     style="position: absolute; top: @ClientY; left: @ClientX;
-    @(ClientX > 0 ? "transform: translate(-25%, -160%);" : "")
+     style="position: absolute; top: @(ClientY + "px"); left: @(ClientX + "px");
+    @( (ClientX > 0 && Placement == "Bottom") ? "transform: translate(-50%, 1%);" : "")
+    @( (ClientX > 0 && Placement == "Top") ? "transform: translate(-50%, -160%);" : "")
      ">
     <div class="arrow"></div>
     <div class="tooltip-inner">
