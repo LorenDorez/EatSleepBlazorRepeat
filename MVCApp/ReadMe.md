@@ -10,6 +10,7 @@ The Setup Instructions I Performed
 
 3. Add `routes.MapComponentHub<RCLib.Shared.Components.App>("app")` to the `Startup.cs` in the `Configure` at the end of the `UseRouting()` section.
    - For each additional componnent you will need to add `.AddComponent<RCLib.Shared.Components.Counter> ("counter")`
+   - Currently there is an issue when you add more than 1 components they need to be rendered on **EVERY** page. I am still working on this so for now only the counter works
 
 4. Add a fake base tag `<base href="rc/fake" />` to the `head` section in `_Layout.cshtml` page under `Views\Shared`
    - This is a fake path to avoid the hijacking of all links
