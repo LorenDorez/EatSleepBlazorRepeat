@@ -2,7 +2,7 @@
 The Setup Instructions I Performed
 ***
 
-*Demo: *  <a href="https://eatsleepblazorrepeat-mvcapp.azurewebsites.net/" target="_blank">https://eatsleepblazorrepeat-mvcapp.azurewebsites.net/</a>
+**Demo:** https://eatsleepblazorrepeat-mvcapp.azurewebsites.net/
 
 1. Add Nuget Package `Microsoft.AspNetCore.Components.Server`
 
