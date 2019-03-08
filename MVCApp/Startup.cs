@@ -43,9 +43,10 @@ namespace MVCApp
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-
             services.AddMvc()
                 .AddNewtonsoftJson();
+
+            services.AddRazorComponents();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,7 +59,7 @@ namespace MVCApp
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseExceptionHandler("/Home/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -68,7 +69,13 @@ namespace MVCApp
 
             app.UseRouting(routes =>
             {
+                routes.MapControllerRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
                 routes.MapRazorPages();
+
+                routes.MapComponentHub<RCLib.Shared.Components.App>("app")
+                    .AddComponent< RCLib.Shared.Components.Counter> ("counter");
             });
 
             app.UseCookiePolicy();
