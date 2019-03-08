@@ -1,11 +1,11 @@
-@page "{*clientPath}"
+﻿@page "{*clientPath}"
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RCApp</title>
-    <base href="~/" />
+    <base href="/app1/" />
     <environment include="Development">
         <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     </environment>
@@ -21,6 +21,6 @@
 <body>
     <app>@(await Html.RenderComponentAsync<App>())</app>
 
-    <script src="_framework/components.server.js"></script>
+   <script src="_framework/components.server.js"></script>
 </body>
 </html>

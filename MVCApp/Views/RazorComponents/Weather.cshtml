@@ -1,4 +1,5 @@
-﻿@addTagHelper *, RCLib.Shared
+﻿@addTagHelper RCLib.Shared.Components.*, RCLib.Shared
+
 @{
     ViewData["Title"] = "Weather";
 }
@@ -9,8 +10,7 @@
 <code>This is currently broken and being worked on!</code>
 
 <hr />
+<counter></counter>
 <div class="rcWrapper">
-    <app>
         <FetchData></FetchData>
-    </app>
 </div>
