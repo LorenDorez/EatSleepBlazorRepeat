@@ -76,8 +76,8 @@ namespace MVCApp
                 routes.MapRazorPages();
 
                 routes.MapComponentHub<RCLib.Shared.Components.App>("app")
-                    .AddComponent<RCLib.Shared.Components.Counter>("counter")
-                    .AddComponent<RCLib.Shared.Components.FetchData>("fetchData");
+                    .AddComponent<RCLib.Shared.Components.Counter>("counter");
+                    //.AddComponent<RCLib.Shared.Components.FetchData>("fetchData");
             });
 
             app.UseCookiePolicy();
