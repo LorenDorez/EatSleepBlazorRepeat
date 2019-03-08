@@ -47,6 +47,7 @@ namespace MVCApp
                 .AddNewtonsoftJson();
 
             services.AddRazorComponents();
+            services.AddSingleton<RCLib.Shared.Services.WeatherForecastService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,7 +76,8 @@ namespace MVCApp
                 routes.MapRazorPages();
 
                 routes.MapComponentHub<RCLib.Shared.Components.App>("app")
-                    .AddComponent< RCLib.Shared.Components.Counter> ("counter");
+                    .AddComponent<RCLib.Shared.Components.Counter>("counter")
+                    .AddComponent<RCLib.Shared.Components.FetchData>("fetchData");
             });
 
             app.UseCookiePolicy();

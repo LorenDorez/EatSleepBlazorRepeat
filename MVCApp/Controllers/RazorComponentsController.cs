@@ -19,5 +19,15 @@ namespace MVCApp.Controllers
         {
             return View();
         }
+
+        public IActionResult Weather()
+        {
+            return View();
+        }
+
+        public IActionResult WeatherKendo()
+        {
+            return View();
+        }
     }
 }
