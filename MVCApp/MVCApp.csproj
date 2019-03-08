@@ -5,6 +5,14 @@
     <UserSecretsId>aspnet-MVCApp-A8644D92-8818-4CB9-B09E-61CEDA0AA20D</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\js\components.server.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\components.server.js" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Server" Version="3.0.0-preview3-19153-02" />
@@ -19,11 +27,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RCLib.Shared\RCLib.Shared.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <None Include="wwwroot\js\components.server.js" />
   </ItemGroup>
 
 </Project>
