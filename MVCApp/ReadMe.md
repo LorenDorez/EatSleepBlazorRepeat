@@ -2,6 +2,8 @@
 The Setup Instructions I Performed
 ***
 
+*Demo: * https://eatsleepblazorrepeat-mvcapp.azurewebsites.net/
+
 1. Add Nuget Package `Microsoft.AspNetCore.Components.Server`
 
 2. Add `services.AddRazorComponents();` to the `Startup.cs` in the `ConfigureServices` at the end.
