@@ -10,6 +10,7 @@ The Setup Instructions I Performed
 
 3. Add `routes.MapComponentHub<RCLib.Shared.Components.App>("app")` to the `Startup.cs` in the `Configure` at the end of the `UseRouting()` section.
    - For each additional componnent you will need to add `.AddComponent<RCLib.Shared.Components.Counter> ("counter")`
+   - Added new extension `AddComponents` that you pass an assembly that has the components, it will loop through it and create all the routes using all lowercase tags/selectors
 
 4. Add a fake base tag `<base href="rc/fake" />` to the `head` section in `_Layout.cshtml` page under `Views\Shared`
    - This is a fake path to avoid the hijacking of all links
