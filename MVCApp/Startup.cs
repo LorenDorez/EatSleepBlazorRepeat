@@ -14,6 +14,7 @@ using MVCApp.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RCLib.Shared;
 
 namespace MVCApp
 {
@@ -76,8 +77,7 @@ namespace MVCApp
                 routes.MapRazorPages();
 
                 routes.MapComponentHub<RCLib.Shared.Components.App>("app")
-                    .AddComponent<RCLib.Shared.Components.Counter>("counter")
-                    .AddComponent<RCLib.Shared.Components.FetchData>("fetchData");
+                    .AddComponents(typeof(RCLib.Shared.Components.App).Assembly); // Extension Method From RCLib.Shared
             });
 
             app.UseCookiePolicy();
