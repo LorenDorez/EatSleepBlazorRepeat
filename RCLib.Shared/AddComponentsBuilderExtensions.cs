@@ -9,6 +9,7 @@ namespace RCLib.Shared
     {
         public static IEndpointConventionBuilder AddComponents(this IEndpointConventionBuilder builder, Assembly appAssembly)
         {
+            Type t1 = builder.GetType();
             if (appAssembly == null)
             {
                 throw new ArgumentNullException(nameof(appAssembly));

@@ -48,6 +48,7 @@ namespace MVCApp
                 .AddNewtonsoftJson();
 
             services.AddRazorComponents();
+            services.AddKendoBlazor();
             services.AddSingleton<RCLib.Shared.Services.WeatherForecastService>();
         }
 

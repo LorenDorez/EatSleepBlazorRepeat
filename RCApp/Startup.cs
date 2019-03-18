@@ -46,7 +46,7 @@ namespace RCApp
             app.UseRouting(routes =>
             {
                 routes.MapRazorPages();
-                routes.MapComponentHub<App>("app", "app1");
+                routes.MapComponentHub<App>("app");
             });
         }
     }

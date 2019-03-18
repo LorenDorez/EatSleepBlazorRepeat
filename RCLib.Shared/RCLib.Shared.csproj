@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Server" Version="3.0.0-preview3-19153-02" />
+    <PackageReference Include="Telerik.UI.for.Blazor" Version="0.3.0" />
   </ItemGroup>
 
 </Project>

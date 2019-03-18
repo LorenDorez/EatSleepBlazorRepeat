@@ -1,4 +1,5 @@
 @page "/counter"
+@addTagHelper Kendo.Blazor.Components.Button.KendoButton, Kendo.Blazor
 
 <h1>Counter From Shared Lib</h1>
 
@@ -6,11 +7,17 @@
 
 <button class="btn btn-primary" onclick="@IncrementCount">Click me</button>
 
+<KendoButton onclick="@IncrementCount2">Kendo Button (x2)</KendoButton>
+
 @functions {
     int currentCount = 0;
 
     void IncrementCount()
     {
         currentCount++;
+    }
+    void IncrementCount2()
+    {
+        currentCount += 2;
     }
 }

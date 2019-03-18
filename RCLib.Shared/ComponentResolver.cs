@@ -35,22 +35,24 @@ namespace RCLib.Shared
                 yield break;
             }
             visited.Add(assembly);
-            var references = assembly.GetReferencedAssemblies();
-            if (!references.Any(r => string.Equals(r.FullName, componentAssembly.FullName, StringComparison.Ordinal)))
-            {
-                // Avoid traversing references that don't point to Components (like netstandard2.0)
-                yield break;
-            }
-            else
-            {
-                yield return assembly;
 
-                // Look at the list of transitive dependencies for more components.
-                foreach (var reference in references.SelectMany(r => EnumerateAssemblies(r, componentAssembly, visited)))
-                {
-                    yield return reference;
-                }
-            }
+            yield return assembly;
+            //var references = assembly.GetReferencedAssemblies();
+            //if (!references.Any(r => string.Equals(r.FullName, componentAssembly.FullName, StringComparison.Ordinal)))
+            //{
+            //    // Avoid traversing references that don't point to Components (like netstandard2.0)
+            //    yield break;
+            //}
+            //else
+            //{
+            //    yield return assembly;
+
+            //    // Look at the list of transitive dependencies for more components.
+            //    foreach (var reference in references.SelectMany(r => EnumerateAssemblies(r, componentAssembly, visited)))
+            //    {
+            //        yield return reference;
+            //    }
+            //}
         }
 
         private class AssemblyComparer : IEqualityComparer<Assembly>

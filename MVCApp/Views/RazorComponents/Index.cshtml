@@ -1,4 +1,6 @@
-﻿@{
+﻿@addTagHelper  RCLib.Shared.Components.Counter, RCLib.Shared
+
+@{
     ViewData["Title"] = "Razor Components";
 }
 
@@ -6,3 +8,10 @@
     <h1 class="display-4">Welcome</h1>
     <p>Landing Page for Razor Components in MVC</p>
 </div>
+
+
+<hr />
+
+<Counter>AAA</Counter>
+
+<p>After</p>
