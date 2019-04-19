@@ -21,7 +21,7 @@ namespace RCApp
         {
             services.AddMvc()
                 .AddNewtonsoftJson();
-
+            
             services.AddRazorComponents();
 
             services.AddSingleton<WeatherForecastService>();
